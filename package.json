@@ -3,12 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.1.1",
+    "@material-ui/icons": "^3.0.1",
+    "@material/top-app-bar": "^0.40.0",
+    "material-ui-icons": "^1.0.0-beta.36",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-devtools-extension": "^2.13.5",
+    "redux-thunk": "^2.3.0",
+    "semantic-ui-css": "^2.2.10",
+    "semantic-ui-react": "^0.82.5",
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
