@@ -12,7 +12,9 @@ import store from "./store"
 import App from './components/App';
 
 ReactDOM.render(<Provider store={store}>
+    <Router>
     <App />
+    </Router>
 </Provider>, document.getElementById('root'));
 registerServiceWorker();
 

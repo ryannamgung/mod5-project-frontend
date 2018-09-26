@@ -6,21 +6,23 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Button from '@material-ui/core/Button';
+import SpecificReview from './SpecificReview.js'
 
 class Item extends Component{
   constructor(props){
     super(props)
   }
+
+
+// do an href on the button
+
+
+  purchaseGood = () => {
+    return
+  }
   render(){
 
     //will need to later add the event handler functionality to this but for now lets just build out the general template of the application
-    function purchaseGood(){
-      return
-    }
-
-    function viewReviews(){
-      return
-    }
 
     return(
       <Paper className={"classes-"+`${this.props.item.id}`}>

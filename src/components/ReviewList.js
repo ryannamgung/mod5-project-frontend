@@ -1,5 +1,15 @@
 import React from "react";
 import Review from './Review.js'
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  root: {
+    ...theme.typography.button,
+    backgroundColor: theme.palette.common.white,
+    padding: theme.spacing.unit,
+  },
+});
 
 const ReviewList = (props) => {
   const allreviews = props.reviews.map(review => {
@@ -8,7 +18,7 @@ const ReviewList = (props) => {
 
   return(
     <div>
-      <h2>All Reviews</h2>
+      <center><div>{"ALL REVIEWS"}</div></center>
       <ul>{allreviews}</ul>
     </div>
   )
