@@ -40,6 +40,7 @@ class NavBar extends React.Component {
     this.setState({ anchorEl: event.currentTarget });
   };
 
+  //Can change this function to rerender a different route
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
@@ -65,7 +66,7 @@ class NavBar extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit" className={classes.grow}>
-              <center>eXchange</center>
+              <center>Clothing eXchange (name in progress)</center>
             </Typography>
             {auth && (
               <div>

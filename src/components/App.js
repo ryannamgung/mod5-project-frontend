@@ -26,14 +26,14 @@ class App extends Component {
 
   render() {
     // console.log("props are", this.props)
+    // <UserList users={this.props.users}/>
     return (
       <div className="app-container">
         <NavBar user={this.props.currentUser}/>
-        <UserList users={this.props.users}/>
+        <div><center>Search By Categories <CategoryList {...this.props}/></center><hr/></div>
         <ItemList items={this.props.items}/>
         <CompanyList companies={this.props.companies}/>
         <ReviewList reviews={this.props.reviews}/>
-        <CategoryList {...this.props}/>
       </div>
     );
   }

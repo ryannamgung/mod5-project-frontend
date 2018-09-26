@@ -1,5 +1,15 @@
 import React from "react";
 import Company from './Company.js'
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  root: {
+    ...theme.typography.button,
+    backgroundColor: theme.palette.common.white,
+    padding: theme.spacing.unit,
+  },
+});
 
 const CompanyList = (props) => {
   // debugger
@@ -9,7 +19,8 @@ const CompanyList = (props) => {
 
   return(
     <div>
-      <h2>Sponsored Corporations</h2>
+      <br/>
+      <center><div>{"SPONSORED CORPORATIONS"}</div></center>
       <ul>{allcompanies}</ul>
     </div>
   )
