@@ -5,7 +5,6 @@ import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux'
 import {fetchItems} from "../action.js"
-import {fetchReviews} from "../action.js"
 
 const styles = theme => ({
   root: {
@@ -15,19 +14,19 @@ const styles = theme => ({
   },
 });
 
-class ItemList extends React.Component{
+class FeaturedItems extends React.Component{
   componentDidMount(){
     this.props.fetchItems()
   }
 
   render(){
-    const allitems = this.props.items.map(item => {
+    const allitems = this.props.items.slice(0,5).map(item => {
       return <Item key={item.id} item={item}/>
     })
 
       return(
         <div>
-        <center><div>{"ALL PRODUCTS"}</div></center>
+        <center><div>{"FEATURED PRODUCTS"}</div></center>
         <br/>
         {allitems}
         </div>
@@ -47,4 +46,4 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemList);
+export default connect(mapStateToProps, mapDispatchToProps)(FeaturedItems);

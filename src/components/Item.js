@@ -20,10 +20,8 @@ class Item extends Component{
   purchaseGood = () => {
     return
   }
+
   render(){
-
-    //will need to later add the event handler functionality to this but for now lets just build out the general template of the application
-
     return(
       <Paper className={"classes-"+`${this.props.item.id}`}>
         <Grid container spacing={8}>
@@ -39,6 +37,7 @@ class Item extends Component{
             <Grid item xs>
 
               <Typography gutterBottom>Price: ${this.props.item.price}</Typography>
+              <Typography color="textSecondary">Name: {this.props.item.name}</Typography>
               <Typography color="textSecondary">Category: {this.props.item.good_type}</Typography>
               <Typography color="textSecondary">ID: {this.props.item.id}</Typography>
             </Grid>

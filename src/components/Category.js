@@ -1,22 +1,30 @@
 import React, {Component} from "react";
 import MenuItem from '@material-ui/core/MenuItem';
+import { Link } from 'react-router-dom'
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
+import SpecificCategory from "./SpecificCategory.js"
+// import Button from '@material-ui/core/Button'
 // import { addUserAction } from '../redux/actions';
 
 class Category extends Component{
   constructor(props){
     super(props)
   }
-  render(){
-    // debugger
-    //will need to later add the event handler functionality to this but for now lets just build out the general template of the application
-    // debugger
-    function handleClick(){
-      //this handle click will render a route of all the items that are related to that specfic category
-      return
-    }
 
+  // handleClick=()=>{
+  //   //this handle click will render a route of all the items that are related to that specfic category
+  //   console.log("clicked")
+  //   return (<div href="">)
+  // }
+  //
+  // `/category-${this.props.category}`
+  render(){
     return(
-      <MenuItem onClick={this.handleClick}>{this.props.category}</MenuItem>
+      <div>
+      <Link to={`/category-${this.props.category}`} style={{ textDecoration: 'none', display: 'block' }}>
+      <MenuItem>{this.props.category}</MenuItem>
+      </Link>
+      </div>
     )
   }
 }

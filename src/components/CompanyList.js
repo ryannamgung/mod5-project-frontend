@@ -2,6 +2,8 @@ import React from "react";
 import Company from './Company.js'
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux'
+import {fetchCompanies} from "../action.js"
 
 const styles = theme => ({
   root: {
@@ -11,19 +13,36 @@ const styles = theme => ({
   },
 });
 
-const CompanyList = (props) => {
-  // debugger
-  const allcompanies = props.companies.map(company => {
-    return <Company key={company.id} company={company}/>
-  })
 
-  return(
-    <div>
-      <br/>
-      <center><div>{"SPONSORED CORPORATIONS"}</div></center>
-      <ul>{allcompanies}</ul>
-    </div>
-  )
+class CompanyList extends React.Component {
+  componentDidMount(){
+    this.props.fetchCompanies()
+  }
+
+  render(){
+    const allcompanies = this.props.companies.map(company => {
+      return <Company key={company.id} company={company}/>
+    })
+
+    return(
+      <div>
+        <br/>
+        <ul>{allcompanies}</ul>
+      </div>
+    );}
+  }
+
+
+function mapStateToProps(state){
+  return {
+    companies: state.companyReducer.companies,
+  }
 }
 
-export default CompanyList
+function mapDispatchToProps(dispatch){
+  return {
+    fetchCompanies: () => dispatch(fetchCompanies()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CompanyList);

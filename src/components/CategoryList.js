@@ -8,17 +8,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import Category from './Category'
-
-const styles = theme => ({
-  button: {
-    display: 'block',
-    marginTop: theme.spacing.unit * 2,
-  },
-  formControl: {
-    margin: theme.spacing.unit,
-    minWidth: 120,
-  },
-});
+import { connect } from 'react-redux'
+import {fetchItems} from "../action.js"
 
 class CategoryList extends React.Component {
   constructor(props){
@@ -26,7 +17,15 @@ class CategoryList extends React.Component {
     this.state = {
       category: '',
       open: false,
-    };
+    }
+  }
+
+  componentDidMount(){
+    this.props.fetchItems()
+  }
+
+  unique = (value, index, self) => {
+    return self.indexOf(value) === index;
   }
 
   handleChange = event => {
@@ -41,18 +40,23 @@ class CategoryList extends React.Component {
     this.setState({ open: true });
   };
 
-  render() {
+  render(){
     var uniqueCategories = Array.from(new Set(this.props.items)).map(item => item.good_type)
-    const categoryNames = uniqueCategories.map(category => {
-      return <Category id={UUID()} category={category}/>
-    })
+    //
+    // const categoryNames = uniqueCategories.map(category => {
+    //   return <Category id={UUID()} category={category}/>
+    // })
+
+    const categoryArray = uniqueCategories.filter(this.unique)
+    const categoryNames = categoryArray.map((category) => {return <Category id={UUID()} category={category}/>})
 
     const { classes } = this.props;
 
     return (
       <form autoComplete="off">
-        <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="demo-controlled-open-select">Categories</InputLabel>
+      <center>
+        <FormControl fullWidth={true}>
+          <InputLabel>Categories</InputLabel>
           <Select
             open={this.state.open}
             onClose={this.handleClose}
@@ -70,13 +74,22 @@ class CategoryList extends React.Component {
               {categoryNames}
           </Select>
         </FormControl>
+        </center>
       </form>
-    );
+    );}
+  }
+
+
+function mapStateToProps(state){
+  return {
+    items: state.itemReducer.items,
   }
 }
 
-CategoryList.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+function mapDispatchToProps(dispatch){
+  return {
+    fetchItems: () => dispatch(fetchItems()),
+  }
+}
 
-export default withStyles(styles)(CategoryList);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryList);
