@@ -7,12 +7,13 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-// import { addUserAction } from '../redux/actions';
+import {Link} from "react-router-dom"
 
 class Company extends Component{
   constructor(props){
     super(props)
   }
+
   render(){
 
     //will need to later add the event handler functionality to this but for now lets just build out the general template of the application
@@ -34,7 +35,7 @@ class Company extends Component{
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" href={this.props.company.company_url}>
             Learn More
           </Button>
         </CardActions>

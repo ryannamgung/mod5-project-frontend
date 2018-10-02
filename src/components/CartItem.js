@@ -9,9 +9,8 @@ import Button from '@material-ui/core/Button';
 import SpecificReview from './SpecificReview.js'
 import { connect } from 'react-redux'
 import * as actions from '../action.js'
-import {Link} from "react-router-dom"
 
-class Item extends Component{
+class CartItem extends Component{
   constructor(props){
     super(props)
   }
@@ -20,8 +19,9 @@ class Item extends Component{
 // do an href on the button
 
 
-  purchaseGood = () => {
-    return this.props.addToCart(this.props.item)
+  removeFromCart = () => {
+    console.log("made it here")
+    return this.props.removeFromCart(this.props.item)
   }
 
   render(){
@@ -45,10 +45,10 @@ class Item extends Component{
               <Typography color="textSecondary">ID: {this.props.item.id}</Typography>
             </Grid>
             <Grid item>
-            <Button variant="outlined" color="primary" onClick={this.purchaseGood}>Add to Cart</Button>
-            <Link to={`/review-${this.props.item.id}`}>
-            <Button variant="outlined" color="tertiary">View Reviews</Button>
-            </Link>
+            <Button variant="outlined" color="secondary"  onClick={this.removeFromCart}>Remove From Cart</Button>
+            </Grid>
+            <Grid item>
+            <Button variant="outlined" color="quaternary"  onClick={this.addReview}>Add a Review</Button>
             </Grid>
           </Grid>
         </Grid>
@@ -61,9 +61,9 @@ class Item extends Component{
 
 function mapStateToProps(state){
   return {
-    addToCart: state.itemReducer.cart,
+    removeFromCart: state.itemReducer.cart,
   }
 }
 
 
-export default connect(mapStateToProps, actions)(Item)
+export default connect(mapStateToProps, actions)(CartItem)

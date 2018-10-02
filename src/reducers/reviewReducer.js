@@ -9,7 +9,6 @@ const defaultState = {reviews: []}
 
 
 export default function reviewReducer(state = defaultState, action){
-  // debugger
   switch(action.type){
     case "GET_REVIEW":
       console.log("Passing in ", {...state, items: action.payload})

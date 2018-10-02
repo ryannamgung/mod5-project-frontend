@@ -2,16 +2,17 @@ import React, {Component} from "react";
 import CategoryList from "./CategoryList.js"
 import FeaturedItems from "./FeaturedItems.js"
 import Button from '@material-ui/core/Button'
-
-const HomePage = () => {
-  return(
-    <div>
+import Image from 'material-ui-image'
+import {Link} from "react-router-dom"
+const homePage = (props) => {
+    return (
+      <div>
       <CategoryList />
-      <FeaturedItems />
-      <Button href="all-items">View All Items</Button>
-      <Button href="all-companies">View Our Sponsors</Button>
-    </div>
-  )
+      <Link to={"/all-items"}><Button>View All Items</Button></Link>
+      <Link to={"/all-companies"}><Button>View Our Sponsors</Button></Link>
+      </div>
+    );
 }
 
-export default HomePage
+
+export default homePage

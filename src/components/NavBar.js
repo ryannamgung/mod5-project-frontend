@@ -12,6 +12,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import {Link} from "react-router-dom"
 
 const styles = {
   root: {
@@ -66,10 +68,15 @@ class NavBar extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit" className={classes.grow}>
-              <center>Clothing eXchange (name in progress)</center>
+              <center>ClothesRuS</center>
             </Typography>
             {auth && (
               <div>
+                <Link to={"/my-cart"}>
+                <IconButton color="inherit" aria-label="Add to shopping cart">
+                  <ShoppingCartIcon />
+                </IconButton>
+                </Link>
                 <IconButton
                   aria-owns={open ? 'menu-appbar' : null}
                   aria-haspopup="true"
@@ -93,7 +100,6 @@ class NavBar extends React.Component {
                   onClose={this.handleClose}
                 >
                   <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
                 </Menu>
               </div>
             )}

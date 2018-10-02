@@ -6,6 +6,9 @@ import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux'
 import {fetchItems} from "../action.js"
 import {fetchReviews} from "../action.js"
+import Button from '@material-ui/core/Button'
+import Image from 'material-ui-image'
+import {Link} from "react-router-dom"
 
 const styles = theme => ({
   root: {
@@ -30,6 +33,7 @@ class ItemList extends React.Component{
         <center><div>{"ALL PRODUCTS"}</div></center>
         <br/>
         {allitems}
+        <Link to={"/homepage"}><Button>Back To Home Page</Button></Link>
         </div>
       )
     }

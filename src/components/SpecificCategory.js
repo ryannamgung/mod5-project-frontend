@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from 'react-redux'
 import {fetchItems} from "../action.js"
 import Item from "./Item.js"
+import Button from '@material-ui/core/Button'
+import {Link} from "react-router-dom"
 
 class SpecificCategory extends React.Component{
   componentDidMount(){
@@ -9,12 +11,17 @@ class SpecificCategory extends React.Component{
   }
 
   render(){
+    const categoryType = this.props.location.pathname.split("-")[1]
+    let filteredItems = this.props.items.filter((item) => item.good_type == categoryType)
+    let mySearch = filteredItems.map((item) => <Item key={item.id} item={item}/>)
+    // debugger
     // const allitems = this.props.items.map(item => {
     //   return <Item key={item.id} item={item}/>
     // })
-    debugger
     return(
-      <div>{"hello"}</div>
+      <div>{mySearch}
+        <Link to={"/homepage"}><Button>Back To Home Page</Button></Link>
+        </div>
     )
   }
 }
