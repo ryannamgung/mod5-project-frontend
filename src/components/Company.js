@@ -19,10 +19,10 @@ class Company extends Component{
     //will need to later add the event handler functionality to this but for now lets just build out the general template of the application
     // debugger
     return(
+      <div>
       <Card>
         <CardActionArea>
           <CardMedia
-            image="/static/images/cards/contemplative-reptile.jpg"
             title="Contemplative Reptile"
           />
           <CardContent>
@@ -40,6 +40,8 @@ class Company extends Component{
           </Button>
         </CardActions>
       </Card>
+      <br/>
+      </div>
     )
   }
 }

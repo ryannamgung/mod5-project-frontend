@@ -19,9 +19,9 @@ class SpecificCategory extends React.Component{
     //   return <Item key={item.id} item={item}/>
     // })
     return(
-      <div>{mySearch}
-        <Link to={"/homepage"}><Button>Back To Home Page</Button></Link>
-        </div>
+      <div>
+      {mySearch}
+      </div>
     )
   }
 }

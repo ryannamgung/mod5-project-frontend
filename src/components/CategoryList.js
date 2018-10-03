@@ -56,7 +56,7 @@ class CategoryList extends React.Component {
       <form autoComplete="off">
       <center>
         <FormControl fullWidth={true}>
-          <InputLabel>Categories</InputLabel>
+          <InputLabel>Search By Category</InputLabel>
           <Select
             open={this.state.open}
             onClose={this.handleClose}

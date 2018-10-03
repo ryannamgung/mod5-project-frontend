@@ -1,43 +1,54 @@
-import React from "react";
-import Item from './Item.js'
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import IconButton from '@material-ui/core/IconButton';
+import InfoIcon from '@material-ui/icons/Info';
 import { connect } from 'react-redux'
 import {fetchItems} from "../action.js"
-import {fetchReviews} from "../action.js"
-import Button from '@material-ui/core/Button'
-import Image from 'material-ui-image'
-import {Link} from "react-router-dom"
+import Item from './Item.js'
 
 const styles = theme => ({
   root: {
-    ...theme.typography.button,
-    backgroundColor: theme.palette.common.white,
-    padding: theme.spacing.unit,
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    backgroundColor: theme.palette.background.paper,
+  },
+  media: {
+    marginLeft: 80,
+  },
+  gridList: {
+    width: "100%",
+    height: "100%",
+  },
+  icon: {
+    color: 'rgba(255, 255, 255, 0.54)',
   },
 });
 
-class ItemList extends React.Component{
-  componentDidMount(){
-    this.props.fetchItems()
-  }
-
-  render(){
-    const allitems = this.props.items.map(item => {
-      return <Item key={item.id} item={item}/>
-    })
-
-      return(
-        <div>
-        <center><div>{"ALL PRODUCTS"}</div></center>
-        <br/>
-        {allitems}
-        <Link to={"/homepage"}><Button>Back To Home Page</Button></Link>
-        </div>
-      )
-    }
-  }
+function ItemList(props) {
+  const { classes } = props;
+  return (
+    <div className={classes.root}>
+    <br/>
+    <br/>
+    <br/>
+      <GridList cellHeight={180} className={classes.gridList}>
+        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+          <ListSubheader component="div">Our Products</ListSubheader>
+        </GridListTile>
+        {props.items.map(item => (
+          <Item key={item.id} item={item}/>
+        ))}
+      </GridList>
+    </div>
+  );
+}
 
 function mapStateToProps(state){
   return {
@@ -51,4 +62,8 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemList);
+ItemList.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ItemList))

@@ -18,10 +18,10 @@ class MyCart extends Component{
     //will need to later add the event handler functionality to this but for now lets just build out the general template of the application
     return(
       <div>
-      <h1>My Cart</h1>
+      <center><h1>My Cart</h1></center>
         {cartItems}
         <Link to={"/checkout"}><Button>Checkout</Button></Link>
-        <Link to={"/homepage"}><Button>Continue Shopping</Button></Link>
+        <Link to={"/all-items"}><Button>Continue Shopping</Button></Link>
       </div>
     )
   }

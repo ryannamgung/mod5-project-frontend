@@ -13,7 +13,19 @@ import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import LeftMenu from "./LeftMenu.js"
 import {Link} from "react-router-dom"
+import SvgIcon from '@material-ui/core/SvgIcon';
+//
+// <IconButton
+//   aria-owns={open ? 'menu-appbar' : null}
+//   aria-has popup="true"
+//   onClick={this.handleMenu}
+//   color="inherit"
+//   className={classes.profileIcon}
+// >
+//   <AccountCircle />
+// </IconButton>
 
 const styles = {
   root: {
@@ -26,7 +38,24 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
+  homeIcon: {
+    marginRight: 5,
+  },
+  title: {
+    marginLeft: 20,
+  },
+  profileIcon: {
+    marginLeft: 10
+  }
 };
+
+function HomeIcon(props) {
+  return (
+    <SvgIcon {...props}>
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+    </SvgIcon>
+  );
+}
 
 class NavBar extends React.Component {
   state = {
@@ -62,29 +91,32 @@ class NavBar extends React.Component {
             label={auth ? 'Logout' : 'Login'}
           />
         </FormGroup>
-        <AppBar position="static">
+        <AppBar position="static" color="secondary">
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-              <MenuIcon />
+            <IconButton className={classes.menuButton} color="default" aria-label="Menu">
+              <LeftMenu />
             </IconButton>
+
+
             <Typography variant="title" color="inherit" className={classes.grow}>
-              <center>ClothesRuS</center>
+              Clothes R Us
             </Typography>
             {auth && (
               <div>
                 <Link to={"/my-cart"}>
-                <IconButton color="inherit" aria-label="Add to shopping cart">
+                <IconButton color="default" className={classes.menuButton}>
                   <ShoppingCartIcon />
+                  <h4>Cart</h4>
+                  </IconButton>
+                </Link>
+
+                <Link to={"/homepage"}>
+                <IconButton color="default" className={classes.homeIcon}>
+                <HomeIcon color="default" className={classes.icon} fontSize="large" />
+                <h4>Home</h4>
                 </IconButton>
                 </Link>
-                <IconButton
-                  aria-owns={open ? 'menu-appbar' : null}
-                  aria-haspopup="true"
-                  onClick={this.handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
+
                 <Menu
                   id="menu-appbar"
                   anchorEl={anchorEl}
