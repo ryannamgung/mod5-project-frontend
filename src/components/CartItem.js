@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import SpecificReview from './SpecificReview.js'
 import { connect } from 'react-redux'
 import * as actions from '../action.js'
+import {Link} from "react-router-dom"
 
 class CartItem extends Component{
   constructor(props){
@@ -48,7 +49,9 @@ class CartItem extends Component{
             <Button variant="outlined" color="secondary"  onClick={this.removeFromCart}>Remove From Cart</Button>
             </Grid>
             <Grid item>
+            <Link to={`/item-review-${this.props.item.id}`}>
             <Button variant="outlined" color="quaternary"  onClick={this.addReview}>Add a Review</Button>
+            </Link>
             </Grid>
           </Grid>
         </Grid>

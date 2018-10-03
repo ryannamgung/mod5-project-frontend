@@ -37,3 +37,11 @@ export function removeFromCart(item){
     payload: item
   }
 }
+
+export function addAReview(review){
+  debugger
+  return{
+    type: 'ADD_A_REVIEW',
+    payload: review
+  }
+}

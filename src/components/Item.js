@@ -94,7 +94,7 @@ class Item extends React.Component {
         <CardActions className={classes.actions}>
           <Button variant="outlined" color="primary" onClick={this.purchaseGood}>Add to Cart</Button>
           <Link to={`/review-${this.props.item.id}`}>
-          <Button variant="outlined" color="tertiary">View Reviews</Button>
+          <Button variant="outlined" color="primary">View Reviews</Button>
           </Link>
         </CardActions>
       </center>

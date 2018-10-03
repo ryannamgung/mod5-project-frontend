@@ -15,6 +15,7 @@ import SpecificReview from "./SpecificReview.js"
 import { connect } from 'react-redux'
 import Checkout from "./Checkout.js"
 import MyCart from "./MyCart.js"
+import UploadForm from './UploadForm.js'
 
 //img width:"100%"
 //look into slider
@@ -39,10 +40,17 @@ class App extends React.Component{
     const categoryArray = uniqueCategories.filter(this.unique)
     const categoryNames = categoryArray.map(category => {return <Route exact path={`/category-${category}`} component={SpecificCategory} />})
 
+
     const reviewArray = Array.from(new Set(this.props.reviews)).map(review => review)
 
     const reviewNames = reviewArray.map(review => {
       return <Route exact path={`/review-${review.item_id}`} component={SpecificReview} />
+    })
+
+    const itemArray = Array.from(new Set(this.props.items)).map(item => item)
+
+    const uploadReview = itemArray.map(item => {
+      return <Route exact path={`/item-review-${item.id}`} component={UploadForm} />
     })
 
 
@@ -56,6 +64,7 @@ class App extends React.Component{
         <Route exact path="/all-companies" component={CompanyList} />
         <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/my-cart" component={MyCart}/>
+        {uploadReview}
         {categoryNames}
         {reviewNames}
         </Switch>
