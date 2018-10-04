@@ -11,7 +11,6 @@ import {Link} from "react-router-dom"
 import MySlider from "./MySlider.js"
 
 const options = [
-  <Link to={"/all-items"}>View Profile</Link>,
   <Link to={"/all-items"}>View All Items</Link>,
   <Link to={"/all-companies"}>View Our Sponsors</Link>
 

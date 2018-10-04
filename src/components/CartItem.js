@@ -21,7 +21,7 @@ class CartItem extends Component{
 
 
   removeFromCart = () => {
-    console.log("made it here")
+    // console.log("made it here")
     return this.props.removeFromCart(this.props.item)
   }
 
@@ -51,6 +51,9 @@ class CartItem extends Component{
             <Grid item>
             <Link to={`/item-review-${this.props.item.id}`}>
             <Button variant="outlined" color="quaternary"  onClick={this.addReview}>Add a Review</Button>
+            <Link to={`/review-${this.props.item.id}`}>
+            <Button variant="outlined" color="primary">View Reviews</Button>
+            </Link>
             </Link>
             </Grid>
           </Grid>

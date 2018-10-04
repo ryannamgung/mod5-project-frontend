@@ -24,7 +24,7 @@ class Review extends Component{
               "{this.props.review.comment}"
             </Typography>
             <Typography component="p">
-               Average Rating: {this.props.review.rating}
+               User Rating: {this.props.review.rating}
             </Typography>
           </CardContent>
         </CardActionArea>

@@ -88,7 +88,7 @@ class NavBar extends React.Component {
             control={
               <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
             }
-            label={auth ? 'Logout' : 'Login'}
+            label={auth ? 'Sleep' : 'Activate'}
           />
         </FormGroup>
         <AppBar position="static" color="secondary">

@@ -1,6 +1,18 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../action.js'
+import {Link} from "react-router-dom"
+import { withStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button'
+import Image from 'material-ui-image'
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 class UploadForm extends Component {
   state = {
@@ -20,16 +32,25 @@ class UploadForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.addAReview({comment: this.state.comment, rating: this.state.rating, item_id: this.state.item_id})
+    alert("Your review has been successfully submitted!")
+    this.props.history.push(`my-cart`);
   }
+  // <textarea id="text" name="name" value={this.state.name} onChange={this.handleChange}/></label>
 
   render(){
     return (
       <form onSubmit={this.handleSubmit}>
-      <label>Review:
+      <TextField
+          id="filled-name"
+          label="Review"
+          value={this.state.name}
+          onChange={this.handleChange}
+          margin="normal"
+          variant="filled"
+        />
       <br/>
-      <textarea type="text" name="name" value={this.state.name} onChange={this.handleChange}/></label>
       <br/>
-      <br/>
+
       <label>Give this item a rating:</label>
         <form action=" ">
           <input type="radio" name="1" value="1" onChange={this.handleRadio}/> 1 <br/>
