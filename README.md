@@ -1,7 +1,10 @@
 # Clothes R Us
 
+## DEMO
+[Demo Video](https://youtu.be/0lkSuFhv6Ik).
+
 ## Getting Started
-Clone the front end repository and run 
+Clone the front end repository and run
 - `npm install`.
 
 ## Prerequisites
